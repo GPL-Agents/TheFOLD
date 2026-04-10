@@ -19,7 +19,7 @@
       --amber:      #c8922a;
       --amber-lt:   #e8b850;
       --white:      #ece9e2;
-      --muted:      #546070;
+      --muted:      #7a8a9a;
     }
 
     html { scroll-behavior: smooth; }
@@ -28,7 +28,8 @@
       background: var(--navy);
       color: var(--white);
       font-family: 'Lato', sans-serif;
-      font-weight: 300;
+      font-size: 18px;
+      font-weight: 400;
       line-height: 1.75;
       overflow-x: hidden;
     }
@@ -68,22 +69,22 @@
     }
     .nav-logo {
       font-family: 'Rubik Dirt', cursive;
-      font-size: 1.3rem;
+      font-size: 1.5rem;
       color: var(--white);
       text-decoration: none;
+      letter-spacing: 0.06em;
     }
-    .nav-logo span { color: var(--amber); }
     .nav-links { display: flex; gap: 2.2rem; list-style: none; }
     .nav-links a {
-      color: var(--muted);
+      color: rgba(236,233,226,0.78);
       text-decoration: none;
-      font-size: 0.78rem;
-      letter-spacing: 0.16em;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       transition: color 0.2s;
     }
     .nav-links a:hover, .nav-links a.active { color: var(--white); }
-    .nav-publisher { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
 
     /* Page header */
     .page-header {
@@ -102,7 +103,7 @@
     }
     .page-header .eyebrow {
       position: relative;
-      font-size: 0.65rem;
+      font-size: 0.7rem;
       letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--amber);
@@ -126,7 +127,7 @@
     .about-inner { max-width: 880px; margin: 0 auto; }
 
     .section-label {
-      font-size: 0.65rem;
+      font-size: 0.7rem;
       letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--amber);
@@ -153,25 +154,25 @@
     /* Author feature */
     .author-feature {
       display: grid;
-      grid-template-columns: 180px 1fr;
+      grid-template-columns: 190px 1fr;
       gap: 4rem;
       align-items: start;
       margin-bottom: 5rem;
     }
     .author-portrait {
-      width: 180px;
-      height: 180px;
+      width: 190px;
+      height: 190px;
       border-radius: 50%;
-      background: var(--navy3);
-      border: 1px solid rgba(200,146,42,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 3.5rem;
-      color: var(--amber);
+      overflow: hidden;
+      border: 2px solid rgba(200,146,42,0.25);
       flex-shrink: 0;
-      box-shadow: 0 0 60px rgba(200,146,42,0.06), 0 20px 60px rgba(0,0,0,0.5);
+      box-shadow: 0 0 60px rgba(200,146,42,0.08), 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .author-portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
     .author-name {
       font-family: 'Playfair Display', serif;
@@ -180,15 +181,15 @@
       margin-bottom: 0.2rem;
     }
     .author-role {
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--amber);
       margin-bottom: 1.8rem;
     }
     .bio-text p {
-      font-size: 0.97rem;
-      color: rgba(236,233,226,0.75);
+      font-size: 1rem;
+      color: rgba(236,233,226,0.78);
       line-height: 1.95;
       margin-bottom: 1.3rem;
     }
@@ -215,12 +216,12 @@
     .inspiration-box h3 {
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: 1.4rem;
+      font-size: 1.45rem;
       color: var(--amber);
       margin-bottom: 1.2rem;
     }
     .inspiration-box p {
-      font-size: 0.93rem;
+      font-size: 0.97rem;
       color: var(--muted);
       line-height: 1.88;
     }
@@ -230,7 +231,7 @@
     .qa-block { margin-bottom: 4.5rem; }
     .qa-block h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
+      font-size: 1.85rem;
       color: var(--white);
       margin-bottom: 2.5rem;
     }
@@ -242,7 +243,7 @@
     .qa-q {
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: 1rem;
+      font-size: 1.05rem;
       color: var(--white);
       margin-bottom: 0.7rem;
     }
@@ -250,11 +251,11 @@
       content: 'Q — ';
       color: var(--amber);
       font-style: normal;
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       letter-spacing: 0.1em;
     }
     .qa-a {
-      font-size: 0.92rem;
+      font-size: 0.97rem;
       color: var(--muted);
       line-height: 1.85;
       padding-left: 1.8rem;
@@ -277,18 +278,18 @@
     }
     .cta-box p {
       color: var(--muted);
-      font-size: 0.92rem;
+      font-size: 0.97rem;
       margin-bottom: 2rem;
     }
     .btn-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
     .btn {
       display: inline-flex;
       align-items: center;
-      padding: 0.9rem 2rem;
+      padding: 0.95rem 2.2rem;
       font-family: 'Lato', sans-serif;
-      font-size: 0.75rem;
+      font-size: 0.82rem;
       font-weight: 700;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       text-decoration: none;
       border-radius: 2px;
@@ -319,18 +320,17 @@
     .footer-sub {
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: 0.88rem;
+      font-size: 0.95rem;
       color: var(--amber);
       margin-bottom: 2.5rem;
     }
     .footer-links { display: flex; gap: 2.5rem; justify-content: center; list-style: none; margin-bottom: 2rem; flex-wrap: wrap; }
-    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; transition: color 0.2s; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; transition: color 0.2s; }
     .footer-links a:hover { color: var(--white); }
-    .footer-copy { font-size: 0.7rem; color: #2a3040; }
+    .footer-copy { font-size: 0.72rem; color: #2a3040; }
 
     @media (max-width: 760px) {
       nav { padding: 1rem 1.5rem; }
-      .nav-publisher { display: none; }
       .author-feature { grid-template-columns: 1fr; text-align: center; }
       .author-portrait { margin: 0 auto; }
       .qa-a { padding-left: 0; }
@@ -342,14 +342,13 @@
   <div class="rain-layer" aria-hidden="true"></div>
 
   <nav>
-    <a href="index.html" class="nav-logo">The <span>FOLD</span></a>
+    <a href="index.html" class="nav-logo">The FOLD</a>
     <ul class="nav-links">
       <li><a href="index.html#synopsis">The Book</a></li>
       <li><a href="index.html#buy">Buy Now</a></li>
       <li><a href="about.html" class="active">About</a></li>
       <li><a href="press.html">Press</a></li>
     </ul>
-    <span class="nav-publisher">GPL Publishing</span>
   </nav>
 
   <div class="page-header">
@@ -362,14 +361,16 @@
 
       <!-- Bio -->
       <div class="author-feature">
-        <div class="author-portrait">GL</div>
+        <div class="author-portrait">
+          <img src="author-portrait.png" alt="Greg Loeffelholz" />
+        </div>
         <div>
           <h2 class="author-name">Greg Loeffelholz</h2>
-          <p class="author-role">Author · GPL Publishing</p>
+          <p class="author-role">Author · Thriller Writer</p>
           <div class="bio-text">
             <p>Greg Loeffelholz is a debut thriller author with a gift for weaving together pulse-pounding suspense with deeply human stories. Growing up with a deep connection to the Boston area — its tight-knit communities, old shadows, and the raw grit of New England winters — he has carried that atmosphere into every page of <em>The FOLD</em>.</p>
             <p>Driven by questions that don't have easy answers — about justice, family, loyalty, and the lengths we go to protect the people we love — Greg writes thrillers that are as emotionally resonant as they are gripping. He believes the best stories live at the intersection of the ordinary and the unthinkable.</p>
-            <p><em>The FOLD</em> is his debut novel, published through GPL Publishing. It's a story that doesn't let go long after you've turned the last page.</p>
+            <p><em>The FOLD</em> is his debut novel and the first in a planned series. It's a story that doesn't let go long after you've turned the last page.</p>
           </div>
         </div>
       </div>
@@ -415,7 +416,7 @@
         <p>Available now on Amazon in Kindle and Paperback editions.</p>
         <div class="btn-group">
           <a href="https://www.amazon.com/dp/B0GLQY9CFP" class="btn btn-primary" target="_blank" rel="noopener">Kindle Edition →</a>
-          <a href="https://www.amazon.com/dp/B0GLRRBLGV" class="btn btn-secondary" target="_blank" rel="noopener">Paperback →</a>
+          <a href="https://www.amazon.com/dp/B0GLRRBLGV" class="btn btn-primary" target="_blank" rel="noopener">Paperback →</a>
         </div>
       </div>
 
@@ -432,7 +433,7 @@
       <li><a href="about.html">About</a></li>
       <li><a href="press.html">Press</a></li>
     </ul>
-    <p class="footer-copy">&copy; 2025 Greg Loeffelholz · GPL Publishing · <a href="https://thefold.website" style="color:#3a4555;text-decoration:none;">thefold.website</a></p>
+    <p class="footer-copy">&copy; 2025 Greg Loeffelholz · <a href="https://thefold.website" style="color:#3a4555;text-decoration:none;">thefold.website</a></p>
   </footer>
 
 </body>
