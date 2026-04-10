@@ -59,9 +59,10 @@
       z-index: 200;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
+      gap: 3.5rem;
       padding: 1rem 2.5rem;
-      background: rgba(5,9,15,0.9);
+      background: rgba(5,9,15,0.82);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(120,180,230,0.08);
     }
@@ -89,14 +90,16 @@
       z-index: 10;
       padding: 10rem 2rem 5rem;
       text-align: center;
-      background: linear-gradient(180deg, var(--navy2) 0%, var(--navy) 100%);
+      background-image: url('The fold - noir city mystery.png');
+      background-size: cover;
+      background-position: center 30%;
       border-bottom: 1px solid rgba(120,180,230,0.07);
     }
     .page-header::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(10,40,90,0.25), transparent);
+      background: linear-gradient(180deg, rgba(5,9,15,0.72) 0%, rgba(5,9,15,0.88) 60%, rgba(5,9,15,1) 100%);
     }
     .page-header .eyebrow { position: relative; font-size: 0.7rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--amber); margin-bottom: 1rem; }
     .page-header h1 { position: relative; font-family: 'Rubik Dirt', cursive; font-size: clamp(2.5rem, 5vw, 4.5rem); color: var(--white); letter-spacing: 0.04em; text-shadow: 0 0 60px rgba(120,180,240,0.1); margin-bottom: 1rem; }
