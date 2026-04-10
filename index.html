@@ -609,6 +609,66 @@
 
     .buy-card .btn { width: 100%; justify-content: center; }
 
+    /* ─── REVIEWS ─── */
+    .reviews-section { background: var(--navy2); }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .review-card {
+      background: var(--navy3);
+      border: 1px solid rgba(120,180,230,0.1);
+      border-radius: 4px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .review-stars {
+      color: var(--amber);
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+    }
+
+    .review-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--white);
+    }
+
+    .review-body {
+      font-size: 0.92rem;
+      color: rgba(236,233,226,0.78);
+      line-height: 1.75;
+      flex: 1;
+    }
+
+    .review-meta {
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 0.4rem;
+    }
+
+    .review-source {
+      font-size: 0.7rem;
+      color: var(--amber);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 0.2rem;
+    }
+
+    @media (max-width: 800px) {
+      .reviews-grid { grid-template-columns: 1fr; }
+    }
+
     /* ─── AUTHOR ─── */
     .author-section { background: var(--navy2); }
 
@@ -896,6 +956,42 @@
           </span>
           <h3>Conspiracy</h3>
           <p>Shadowy forces and a sinister elite weave a web that stretches far deeper than Jim ever imagined.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews-section">
+    <div class="section-inner">
+      <p class="section-label">Reader Reviews</p>
+      <h2 class="section-title">What Readers Are Saying</h2>
+
+      <div class="reviews-grid">
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-title">Great book!</div>
+          <p class="review-body">"Just finished The Fold, an excellent thriller from start to finish. I read it on a flight and couldn't put it down. Really well written and completely engaging the whole way through. A++"</p>
+          <div class="review-meta">NWR &nbsp;·&nbsp; April 2026</div>
+          <div class="review-source">Verified Purchase · Amazon</div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-title">Great book</div>
+          <p class="review-body">"This was an amazing book from start to finish. The story was engaging, the characters felt real, and the writing made it hard to put down. Every chapter kept me interested and wanting to know what would happen next."</p>
+          <div class="review-meta">Tarek Alda &nbsp;·&nbsp; February 2026</div>
+          <div class="review-source">Verified Purchase · Amazon</div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-title">Quick read and definitely a page turner.</div>
+          <p class="review-body">"What a great story! Once I started reading it, I couldn't put it down. It was great to have that local touch and really feel like you are in the story. Would love to see what happens with Jim in the future!"</p>
+          <div class="review-meta">Kevin A Apgar &nbsp;·&nbsp; February 2026</div>
+          <div class="review-source">Verified Purchase · Amazon</div>
         </div>
 
       </div>
