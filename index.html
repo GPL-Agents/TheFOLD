@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The FOLD — A Thriller by Greg Loeffelholz</title>
+  <meta name="description" content="A tale of vengeance, redemption, and the unbreakable bond of a father's love. The FOLD — a heart-pounding thriller by Greg Loeffelholz." />
+  <meta property="og:title" content="The FOLD — A Thriller by Greg Loeffelholz" />
+  <meta property="og:description" content="How far would you go for justice?" />
+  <meta property="og:image" content="TheFOLD.Cover.png" />
+  <meta property="og:url" content="https://thefold.website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:       #05090f;
+      --navy2:      #08111c;
+      --navy3:      #0c1824;
+      --navy4:      #112030;
+      --teal-dim:   #0a1e2c;
+      --amber:      #c8922a;
+      --amber-lt:   #e8b850;
+      --amber-dim:  rgba(200,146,42,0.18);
+      --white:      #ece9e2;
+      --muted:      #546070;
+      --rain-blue:  rgba(120,180,230,0.07);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    /* ─── RAIN OVERLAY ─── */
+    .rain-layer {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .rain-layer::before,
+    .rain-layer::after {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: 200%;
+      background-image:
+        repeating-linear-gradient(
+          175deg,
+          transparent 0,
+          transparent 3px,
+          rgba(140,200,240,0.028) 3px,
+          rgba(140,200,240,0.028) 4px
+        );
+      background-size: 60px 80px;
+      animation: rainFall 1.4s linear infinite;
+    }
+
+    .rain-layer::after {
+      background-size: 40px 60px;
+      opacity: 0.6;
+      animation-duration: 1.1s;
+      animation-delay: -0.5s;
+    }
+
+    @keyframes rainFall {
+      to { transform: translateY(50%); }
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2.5rem;
+      background: rgba(5,9,15,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(120,180,230,0.08);
+    }
+
+    .nav-logo {
+      font-family: 'Rubik Dirt', cursive;
+      font-size: 1.3rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+    }
+
+    .nav-logo span { color: var(--amber); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-publisher {
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 8rem 2rem 4rem;
+    }
+
+    /* Multi-layer atmospheric bg */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        /* Wet street glow at bottom */
+        radial-gradient(ellipse 80% 30% at 50% 100%, rgba(10,40,80,0.6) 0%, transparent 70%),
+        /* Amber streetlamp glow left */
+        radial-gradient(ellipse 35% 50% at 15% 70%, rgba(180,120,20,0.08) 0%, transparent 60%),
+        /* Ambient city glow */
+        radial-gradient(ellipse 60% 40% at 60% 30%, rgba(20,60,110,0.18) 0%, transparent 70%),
+        /* Base gradient */
+        linear-gradient(180deg, #05090f 0%, #080f1a 40%, #061018 100%);
+    }
+
+    /* Subtle grid / cobblestone texture */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(120,180,230,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(120,180,230,0.015) 1px, transparent 1px);
+      background-size: 80px 80px;
+      opacity: 0.4;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 10;
+      max-width: 1140px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    /* ── Left: text ── */
+    .hero-text {}
+
+    .hero-publisher {
+      font-size: 0.65rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .hero-publisher::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--muted);
+    }
+
+    .hero-title-block {
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-title-the {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 400;
+      color: var(--white);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: block;
+      line-height: 1;
+    }
+
+    .hero-title-fold {
+      font-family: 'Rubik Dirt', cursive;
+      font-size: clamp(5rem, 12vw, 9rem);
+      color: var(--white);
+      line-height: 0.88;
+      display: block;
+      text-shadow:
+        0 0 80px rgba(120,180,240,0.12),
+        0 2px 0 rgba(0,0,0,0.8),
+        3px 3px 0 rgba(0,30,60,0.4);
+      letter-spacing: -0.01em;
+    }
+
+    .hero-author {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--amber);
+      margin-bottom: 2.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .hero-author::before {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 1px;
+      background: var(--amber);
+      opacity: 0.5;
+    }
+
+    .hero-tagline {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+      color: var(--white);
+      margin-bottom: 1.6rem;
+      line-height: 1.4;
+      opacity: 0.9;
+    }
+
+    .hero-tagline::before {
+      content: '"';
+      color: var(--amber);
+      font-size: 1.3em;
+      line-height: 0;
+      vertical-align: -0.25em;
+      margin-right: 0.05em;
+    }
+
+    .hero-tagline::after {
+      content: '"';
+      color: var(--amber);
+      font-size: 1.3em;
+      line-height: 0;
+      vertical-align: -0.25em;
+      margin-left: 0.05em;
+    }
+
+    .hero-desc {
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin-bottom: 2.8rem;
+      max-width: 440px;
+      line-height: 1.85;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2rem;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.25s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--amber);
+      color: #05090f;
+    }
+
+    .btn-primary:hover {
+      background: var(--amber-lt);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(200,146,42,0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(200,200,210,0.25);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(200,200,210,0.6);
+      background: rgba(200,200,210,0.05);
+      transform: translateY(-2px);
+    }
+
+    /* ── Right: cover ── */
+    .hero-cover {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-cover::before {
+      /* puddle / wet reflection glow beneath cover */
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70%;
+      height: 40px;
+      background: radial-gradient(ellipse, rgba(20,80,150,0.25), transparent 70%);
+      filter: blur(10px);
+    }
+
+    .hero-cover img {
+      width: 100%;
+      max-width: 330px;
+      border-radius: 3px;
+      box-shadow:
+        0 0 0 1px rgba(120,180,230,0.1),
+        0 30px 90px rgba(0,0,0,0.85),
+        0 0 60px rgba(10,50,100,0.3);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-cover img:hover {
+      transform: translateY(-10px) rotate(1.5deg);
+      box-shadow:
+        0 0 0 1px rgba(200,146,42,0.25),
+        0 50px 120px rgba(0,0,0,0.9),
+        0 0 100px rgba(10,50,100,0.4);
+    }
+
+    /* Scroll hint */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted);
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      animation: bob 2.5s ease-in-out infinite;
+    }
+
+    .scroll-hint::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 44px;
+      background: linear-gradient(to bottom, rgba(120,180,230,0.4), transparent);
+    }
+
+    @keyframes bob {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(7px); }
+    }
+
+    /* ─── PULL QUOTE STRIP ─── */
+    .quote-strip {
+      position: relative;
+      z-index: 10;
+      background: var(--navy2);
+      border-top: 1px solid rgba(120,180,230,0.07);
+      border-bottom: 1px solid rgba(120,180,230,0.07);
+      padding: 4rem 2rem;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .quote-strip::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(10,50,100,0.12) 50%, transparent);
+    }
+
+    .quote-strip blockquote {
+      position: relative;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.2rem, 2.8vw, 1.9rem);
+      color: var(--white);
+      max-width: 820px;
+      margin: 0 auto;
+      line-height: 1.5;
+      opacity: 0.92;
+    }
+
+    .quote-strip .open-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      color: var(--amber);
+      line-height: 0;
+      vertical-align: -0.45em;
+      margin-right: 0.05em;
+      opacity: 0.7;
+    }
+
+    /* ─── SECTIONS ─── */
+    section {
+      position: relative;
+      z-index: 10;
+      padding: 7rem 2rem;
+    }
+
+    .section-inner {
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .section-label::after {
+      content: '';
+      display: block;
+      flex: 1;
+      max-width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--amber), transparent);
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--white);
+      margin-bottom: 2.5rem;
+      line-height: 1.2;
+    }
+
+    /* ─── SYNOPSIS ─── */
+    .synopsis { background: var(--navy); }
+
+    .synopsis-body {
+      font-size: 1.02rem;
+      color: rgba(236,233,226,0.78);
+      max-width: 700px;
+      line-height: 1.95;
+    }
+
+    .synopsis-body p + p { margin-top: 1.5rem; }
+
+    .synopsis-body .reveal {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: var(--white);
+      font-size: 1.08rem;
+    }
+
+    .synopsis-body .kicker {
+      color: var(--amber);
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      margin-top: 2.5rem;
+      display: block;
+      border-left: 2px solid var(--amber);
+      padding-left: 1.2rem;
+      line-height: 1.6;
+    }
+
+    /* ─── THEMES ─── */
+    .themes { background: var(--navy2); }
+
+    .themes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .theme-card {
+      background: var(--navy3);
+      border: 1px solid rgba(120,180,230,0.08);
+      border-bottom: 2px solid rgba(120,180,230,0.12);
+      border-radius: 4px;
+      padding: 2rem 1.7rem;
+      transition: border-color 0.3s, transform 0.3s, background 0.3s;
+    }
+
+    .theme-card:hover {
+      border-color: rgba(200,146,42,0.3);
+      border-bottom-color: var(--amber);
+      transform: translateY(-4px);
+      background: var(--navy4);
+    }
+
+    .theme-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .theme-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .theme-card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ─── BUY ─── */
+    .buy { background: var(--navy); }
+
+    .buy-intro {
+      font-size: 0.92rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 3.5rem;
+    }
+
+    .buy-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 2rem;
+      max-width: 680px;
+    }
+
+    .buy-card {
+      background: var(--navy3);
+      border: 1px solid rgba(120,180,230,0.1);
+      border-radius: 4px;
+      padding: 2.5rem 2rem;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+
+    .buy-card:hover {
+      border-color: rgba(200,146,42,0.4);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(200,146,42,0.05);
+    }
+
+    .buy-card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+
+    .buy-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .buy-card .sub {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 1.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .buy-card .btn { width: 100%; justify-content: center; }
+
+    /* ─── AUTHOR ─── */
+    .author-section { background: var(--navy2); }
+
+    .author-grid {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 3.5rem;
+      align-items: start;
+      max-width: 800px;
+    }
+
+    .author-monogram {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: var(--navy3);
+      border: 1px solid rgba(200,146,42,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      color: var(--amber);
+      flex-shrink: 0;
+      box-shadow: 0 0 40px rgba(200,146,42,0.06);
+    }
+
+    .author-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--white);
+      margin-bottom: 0.2rem;
+    }
+
+    .author-role {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1.5rem;
+    }
+
+    .author-bio {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.9;
+    }
+
+    .author-bio em { color: var(--white); font-style: normal; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      position: relative;
+      z-index: 10;
+      background: #030609;
+      border-top: 1px solid rgba(120,180,230,0.06);
+      padding: 4rem 2rem 2.5rem;
+      text-align: center;
+    }
+
+    .footer-title {
+      font-family: 'Rubik Dirt', cursive;
+      font-size: 2.2rem;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.04em;
+      text-shadow: 0 0 40px rgba(120,180,240,0.1);
+    }
+
+    .footer-sub {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--amber);
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2.5rem;
+      justify-content: center;
+      list-style: none;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-copy {
+      font-size: 0.7rem;
+      color: #2a3040;
+    }
+
+    .footer-copy a { color: #3a4555; text-decoration: none; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 820px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-publisher { display: none; }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+        text-align: center;
+      }
+
+      .hero-cover { order: -1; }
+      .hero-cover img { max-width: 240px; }
+      .hero-author { justify-content: center; }
+      .hero-publisher { justify-content: center; }
+      .section-label { justify-content: center; }
+      .hero-desc { max-width: 100%; }
+      .btn-group { justify-content: center; }
+
+      .author-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .author-monogram { margin: 0 auto; }
+      .scroll-hint { display: none; }
+    }
+
+    @media (max-width: 540px) {
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Rain layer -->
+  <div class="rain-layer" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">The <span>FOLD</span></a>
+    <ul class="nav-links">
+      <li><a href="#synopsis">The Book</a></li>
+      <li><a href="#buy">Buy Now</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="press.html">Press</a></li>
+    </ul>
+    <span class="nav-publisher">GPL Publishing</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home" aria-label="Hero">
+    <div class="hero-inner">
+
+      <div class="hero-text">
+        <p class="hero-publisher">GPL Publishing</p>
+
+        <div class="hero-title-block">
+          <span class="hero-title-the">The</span>
+          <span class="hero-title-fold">FOLD</span>
+        </div>
+
+        <p class="hero-author">By Greg Loeffelholz</p>
+
+        <p class="hero-tagline">How far would you go for justice?</p>
+
+        <p class="hero-desc">A tale of vengeance, redemption, and the unbreakable bond of a father's love — set against the rain-soaked streets of the Boston area. A heart-pounding thriller with twists that leave you breathless.</p>
+
+        <div class="btn-group">
+          <a href="#buy" class="btn btn-primary">Get Your Copy</a>
+          <a href="#synopsis" class="btn btn-secondary">Read the Story</a>
+        </div>
+      </div>
+
+      <div class="hero-cover">
+        <img src="TheFOLD.Cover.png" alt="The FOLD — novel by Greg Loeffelholz" />
+      </div>
+
+    </div>
+    <div class="scroll-hint" aria-hidden="true">Scroll</div>
+  </section>
+
+  <!-- QUOTE STRIP -->
+  <div class="quote-strip">
+    <blockquote>
+      <span class="open-quote">"</span>A tale of vengeance, redemption, and the unbreakable bond of a father's love."
+    </blockquote>
+  </div>
+
+  <!-- SYNOPSIS -->
+  <section class="synopsis" id="synopsis">
+    <div class="section-inner">
+      <p class="section-label">The Story</p>
+      <h2 class="section-title">Welcome to the FOLD</h2>
+
+      <div class="synopsis-body">
+        <p>In a quiet town near Boston, one family's perfect life is shattered when a night at the movies ends in tragedy — eight-year-old <strong>Jamie Thornton</strong> mysteriously vanishes, leaving her father, <strong>Jim</strong>, desperate for answers and the world he knew in ruins.</p>
+
+        <p>When the justice system fails, Jim is approached by a secretive group called <strong>the FOLD</strong> — a network of grieving fathers promising justice outside the law. Drawn into their seductive pledge, Jim spirals into a dark underworld where nothing is as it seems. The truth always out of view, hidden below the surface.</p>
+
+        <p>As the FOLD's true motives are revealed, Jim uncovers a chilling conspiracy that connects shadowy government forces, staged lies, and a sinister elite determined to exploit him. Fueled by desperation, Jim teams up with an unlikely ally, only to uncover an even more shocking truth:</p>
+
+        <p class="reveal">Jamie may still be alive.</p>
+
+        <p>Racing against time, Jim must navigate betrayal, deadly secrets, and his own morality to bring his daughter home.</p>
+
+        <span class="kicker">Welcome to the FOLD — where justice has its own rules.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- THEMES -->
+  <section class="themes" id="themes">
+    <div class="section-inner">
+      <p class="section-label">Inside the Pages</p>
+      <h2 class="section-title">A Story That Stays With You</h2>
+
+      <div class="themes-grid">
+        <div class="theme-card">
+          <span class="theme-icon">🔦</span>
+          <h3>Mystery &amp; Suspense</h3>
+          <p>Every chapter peels back another layer of deception. Nothing — and no one — is what they appear to be.</p>
+        </div>
+        <div class="theme-card">
+          <span class="theme-icon">🧷</span>
+          <h3>A Father's Love</h3>
+          <p>At its heart, this is a story about the lengths a parent will go to protect the one they love most.</p>
+        </div>
+        <div class="theme-card">
+          <span class="theme-icon">⚖️</span>
+          <h3>Justice vs. Morality</h3>
+          <p>When the system fails, who do you become in your pursuit of what's right?</p>
+        </div>
+        <div class="theme-card">
+          <span class="theme-icon">🕸️</span>
+          <h3>Conspiracy</h3>
+          <p>Shadowy forces and a sinister elite weave a web that stretches far deeper than Jim ever imagined.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUY -->
+  <section class="buy" id="buy">
+    <div class="section-inner">
+      <p class="section-label">Available Now</p>
+      <h2 class="section-title">Get Your Copy</h2>
+      <p class="buy-intro">The FOLD is available on Amazon in both Kindle and Paperback editions. Start reading today.</p>
+
+      <div class="buy-cards">
+        <div class="buy-card">
+          <span class="buy-card-icon">📱</span>
+          <h3>Kindle Edition</h3>
+          <p class="sub">Instant delivery · Any device</p>
+          <a href="https://www.amazon.com/dp/B0GLQY9CFP" class="btn btn-primary" target="_blank" rel="noopener">Buy on Amazon →</a>
+        </div>
+        <div class="buy-card">
+          <span class="buy-card-icon">📖</span>
+          <h3>Paperback</h3>
+          <p class="sub">Hold the story in your hands</p>
+          <a href="https://www.amazon.com/dp/B0GLRRBLGV" class="btn btn-secondary" target="_blank" rel="noopener">Buy on Amazon →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUTHOR -->
+  <section class="author-section" id="author">
+    <div class="section-inner">
+      <p class="section-label">The Author</p>
+      <h2 class="section-title">Greg Loeffelholz</h2>
+
+      <div class="author-grid">
+        <div class="author-monogram">GL</div>
+        <div>
+          <h3 class="author-name">Greg Loeffelholz</h3>
+          <p class="author-role">Author · GPL Publishing</p>
+          <p class="author-bio">Greg Loeffelholz is a debut thriller writer with a gift for weaving pulse-pounding suspense with deeply human stories. Rooted in the atmosphere of the Boston area — its rain-slicked streets, old neighborhoods, and raw grit — <em>The FOLD</em> is his first novel. It's the kind of story driven by the questions that keep us up at night: about justice, family, and how far we'd go when the system abandons us.</p>
+          <br />
+          <a href="about.html" class="btn btn-secondary">About the Author →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-title">The FOLD</div>
+    <p class="footer-sub">Where justice has its own rules.</p>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#synopsis">The Book</a></li>
+      <li><a href="#buy">Buy Now</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="press.html">Press</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2025 Greg Loeffelholz · GPL Publishing · <a href="https://thefold.website">thefold.website</a></p>
+  </footer>
+
+</body>
+</html>
