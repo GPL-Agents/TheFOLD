@@ -11,7 +11,7 @@
   <meta property="og:url" content="https://thefold.website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&family=Anton&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -121,7 +121,8 @@
       transition: color 0.2s;
     }
 
-    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--amber); }
 
     /* ─── HERO ─── */
     .hero {
@@ -132,29 +133,23 @@
       justify-content: center;
       overflow: hidden;
       padding: 5rem 2rem 4rem;
-      background-image: url('The fold - noir city mystery.png');
+      background-image: url('thefold.home1.png');
       background-size: cover;
-      background-position: center top;
+      background-position: center center;
       background-repeat: no-repeat;
     }
 
-    /* Dark cinematic overlay — heavier on left for legibility, reveals image on right */
+    /* Cinematic overlay — dark vignette at edges, allows image to breathe in centre */
     .hero::before {
       content: '';
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(105deg,
-          rgba(5,9,15,0.92) 0%,
-          rgba(5,9,15,0.78) 45%,
-          rgba(5,9,15,0.35) 75%,
-          rgba(5,9,15,0.15) 100%
-        ),
         linear-gradient(180deg,
-          rgba(5,9,15,0.4) 0%,
-          transparent 30%,
-          transparent 70%,
-          rgba(5,9,15,0.7) 100%
+          rgba(5,9,15,0.68) 0%,
+          rgba(5,9,15,0.38) 35%,
+          rgba(5,9,15,0.45) 65%,
+          rgba(5,9,15,0.82) 100%
         );
     }
 
@@ -193,16 +188,16 @@
     }
 
     .hero-title-fold {
-      font-family: 'Rubik Dirt', cursive;
-      font-size: clamp(5rem, 12vw, 9rem);
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(5.5rem, 13vw, 10rem);
       color: var(--white);
       line-height: 0.88;
       display: block;
+      letter-spacing: 0.06em;
       text-shadow:
-        0 0 80px rgba(120,180,240,0.12),
-        0 2px 0 rgba(0,0,0,0.8),
-        3px 3px 0 rgba(0,30,60,0.4);
-      letter-spacing: -0.01em;
+        0 0 100px rgba(120,180,240,0.18),
+        0 3px 0 rgba(0,0,0,0.9),
+        4px 4px 0 rgba(0,20,50,0.5);
     }
 
     .hero-author {
