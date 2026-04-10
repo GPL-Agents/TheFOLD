@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About the Author — The FOLD by Greg Loeffelholz</title>
-  <meta name="description" content="About Greg Loeffelholz, author of The FOLD — a heart-pounding thriller about justice, betrayal, and a father's love." />
+  <title>About the Author | The FOLD by Greg Loeffelholz</title>
+  <meta name="description" content="About Greg Loeffelholz, author of The FOLD, a heart-pounding thriller about justice, betrayal, and a father's love." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
@@ -93,10 +93,9 @@
       z-index: 10;
       padding: 10rem 2rem 5rem;
       text-align: center;
-      background-image: url('The fold_ a rainy urban thriller.png');
+      background-image: url('thefold.home1.png');
       background-size: cover;
       background-position: center top;
-      border-bottom: 1px solid rgba(120,180,230,0.07);
     }
     .page-header::before {
       content: '';
@@ -114,11 +113,13 @@
     }
     .page-header h1 {
       position: relative;
-      font-family: 'Rubik Dirt', cursive;
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.8rem);
+      font-weight: 700;
+      font-style: italic;
       color: var(--white);
-      letter-spacing: 0.04em;
-      text-shadow: 0 0 60px rgba(120,180,240,0.1);
+      letter-spacing: 0.02em;
+      text-shadow: 0 2px 40px rgba(0,0,0,0.6);
     }
 
     /* Section */
@@ -251,7 +252,7 @@
       margin-bottom: 0.7rem;
     }
     .qa-q::before {
-      content: 'Q — ';
+      content: 'Q: ';
       color: var(--amber);
       font-style: normal;
       font-size: 0.78rem;
@@ -302,6 +303,7 @@
     }
     .btn-primary { background: var(--amber); color: #05090f; }
     .btn-primary:hover { background: var(--amber-lt); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(200,146,42,0.3); }
+    .btn-arrow { color: #fff; font-size: 1.3rem; line-height: 1; display: inline-flex; align-items: center; }
     .btn-secondary { background: transparent; color: var(--white); border: 1px solid rgba(200,200,210,0.25); }
     .btn-secondary:hover { border-color: rgba(200,200,210,0.6); background: rgba(200,200,210,0.05); transform: translateY(-2px); }
 
@@ -371,9 +373,8 @@
           <h2 class="author-name">Greg Loeffelholz</h2>
           <p class="author-role">Author · Thriller Writer</p>
           <div class="bio-text">
-            <p>Greg Loeffelholz is a debut thriller author with a gift for weaving together pulse-pounding suspense with deeply human stories. Growing up with a deep connection to the Boston area — its tight-knit communities, old shadows, and the raw grit of New England winters — he has carried that atmosphere into every page of <em>The FOLD</em>.</p>
-            <p>Driven by questions that don't have easy answers — about justice, family, loyalty, and the lengths we go to protect the people we love — Greg writes thrillers that are as emotionally resonant as they are gripping. He believes the best stories live at the intersection of the ordinary and the unthinkable.</p>
-            <p><em>The FOLD</em> is his debut novel and the first in a planned series. It's a story that doesn't let go long after you've turned the last page.</p>
+            <p>Greg Loeffelholz spent years building businesses and raising a family before returning to fiction. A former advertising and AI strategist, his work explores the intersection of power, technology, and influence: forces that quietly shape the world around us.</p>
+            <p><em>The FOLD</em> is his debut thriller and the first in a planned series examining vigilantism, secret networks, and the moral cost of justice pursued outside the law. He lives in Massachusetts with his wife and three children.</p>
           </div>
         </div>
       </div>
@@ -384,8 +385,8 @@
       <div class="inspiration-box">
         <h3>Behind the Story</h3>
         <p>Every thriller begins with a question. For Greg, it was this: <em>What would a good man become if the world gave him no good options?</em></p>
-        <p>Jim Thornton isn't a spy or a superhero — he's a father. Ordinary, flawed, and desperate. <em>The FOLD</em> was born from that premise: strip everything away, put an everyday person against an extraordinary and corrupt machine, and watch who they choose to be.</p>
-        <p>The story draws on themes of systemic failure, the hunger for justice, and how grief can either destroy or fuel a person. Set against the Boston area — with its layered history, waterfront streets, and quiet suburban neighborhoods that can suddenly feel very dark — location is texture. It's part of the story's DNA.</p>
+        <p>Jim Thornton isn't a spy or a superhero. He's a father. Ordinary, flawed, and desperate. <em>The FOLD</em> was born from that premise: strip everything away, put an everyday person against an extraordinary and corrupt machine, and watch who they choose to be.</p>
+        <p>The story draws on themes of systemic failure, the hunger for justice, and how grief can either destroy or fuel a person. Set against the Boston area, with its layered history, waterfront streets, and quiet suburban neighborhoods that can suddenly feel very dark. Location is texture. It's part of the story's DNA.</p>
       </div>
 
       <!-- Q&A -->
@@ -394,17 +395,17 @@
 
         <div class="qa-item">
           <p class="qa-q">What made you want to write this particular story?</p>
-          <p class="qa-a">I kept coming back to the idea of a parent's worst nightmare — and what happens after. The systems that are supposed to protect us sometimes fail. I wanted to explore what a good person does when the safety net doesn't catch them, and how far they'd go in that darkness.</p>
+          <p class="qa-a">I kept coming back to the idea of a parent's worst nightmare, and what happens after. The systems that are supposed to protect us sometimes fail. I wanted to explore what a good person does when the safety net doesn't catch them, and how far they'd go in that darkness.</p>
         </div>
 
         <div class="qa-item">
           <p class="qa-q">Why set it in the Boston area?</p>
-          <p class="qa-a">Boston has this incredible layering — old money and working-class neighborhoods sitting side by side, institutions with deep roots alongside real shadows. It felt like the perfect setting for a story about systems that look trustworthy on the surface but hide something much darker underneath. And honestly, a rainy Boston night just feels like a thriller waiting to happen.</p>
+          <p class="qa-a">Boston has this incredible layering: old money and working-class neighborhoods sitting side by side, institutions with deep roots alongside real shadows. It felt like the perfect setting for a story about systems that look trustworthy on the surface but hide something much darker underneath. And honestly, a rainy Boston night just feels like a thriller waiting to happen.</p>
         </div>
 
         <div class="qa-item">
           <p class="qa-q">What do you want readers to walk away feeling?</p>
-          <p class="qa-a">Breathless — and a little shaken. But also genuinely moved. I want them to think about justice, about family, and about the gray space between right and wrong. Those questions don't have clean answers, and I think the best thrillers sit in that discomfort.</p>
+          <p class="qa-a">Breathless, and a little shaken. But also genuinely moved. I want them to think about justice, about family, and about the gray space between right and wrong. Those questions don't have clean answers, and I think the best thrillers sit in that discomfort.</p>
         </div>
 
         <div class="qa-item">
@@ -418,8 +419,8 @@
         <h3>Enter the FOLD</h3>
         <p>Available now on Amazon in Kindle and Paperback editions.</p>
         <div class="btn-group">
-          <a href="https://www.amazon.com/dp/B0GLQY9CFP" class="btn btn-primary" target="_blank" rel="noopener">Kindle Edition →</a>
-          <a href="https://www.amazon.com/dp/B0GLRRBLGV" class="btn btn-primary" target="_blank" rel="noopener">Paperback →</a>
+          <a href="https://www.amazon.com/dp/B0GLQY9CFP" class="btn btn-primary" target="_blank" rel="noopener">Kindle Edition <span class="btn-arrow">→</span></a>
+          <a href="https://www.amazon.com/dp/B0GLRRBLGV" class="btn btn-primary" target="_blank" rel="noopener">Paperback <span class="btn-arrow">→</span></a>
         </div>
       </div>
 

@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The FOLD — A Thriller by Greg Loeffelholz</title>
-  <meta name="description" content="A tale of vengeance, redemption, and the unbreakable bond of a father's love. The FOLD — a heart-pounding thriller by Greg Loeffelholz." />
-  <meta property="og:title" content="The FOLD — A Thriller by Greg Loeffelholz" />
+  <title>The FOLD: A Thriller by Greg Loeffelholz</title>
+  <meta name="description" content="A tale of vengeance, redemption, and the unbreakable bond of a father's love. The FOLD, a heart-pounding thriller by Greg Loeffelholz." />
+  <meta property="og:title" content="The FOLD: A Thriller by Greg Loeffelholz" />
   <meta property="og:description" content="How far would you go for justice?" />
   <meta property="og:image" content="TheFOLD.Cover.png" />
   <meta property="og:url" content="https://thefold.website" />
@@ -181,19 +181,21 @@
       font-size: clamp(1.5rem, 3vw, 2.2rem);
       font-weight: 400;
       color: var(--white);
-      letter-spacing: 0.1em;
+      letter-spacing: 0.38em;
       text-transform: uppercase;
       display: block;
       line-height: 1;
+      margin-bottom: 0.4rem;
     }
 
     .hero-title-fold {
       font-family: 'Anton', sans-serif;
       font-size: clamp(5.5rem, 13vw, 10rem);
       color: var(--white);
-      line-height: 0.88;
+      line-height: 0.9;
       display: block;
       letter-spacing: 0.06em;
+      filter: url(#fold-distress);
       text-shadow:
         0 0 100px rgba(120,180,240,0.18),
         0 3px 0 rgba(0,0,0,0.9),
@@ -294,6 +296,13 @@
     .btn-primary {
       background: var(--amber);
       color: #05090f;
+    }
+    .btn-arrow {
+      color: #fff;
+      font-size: 1.3rem;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
     }
 
     .btn-primary:hover {
@@ -439,10 +448,11 @@
     .synopsis-body p + p { margin-top: 1.5rem; }
 
     .synopsis-body .reveal {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
+      font-family: inherit;
+      font-style: normal;
+      font-weight: 400;
       color: var(--white);
-      font-size: 1.12rem;
+      font-size: 1.05rem;
     }
 
     .synopsis-body .kicker {
@@ -729,6 +739,38 @@
 </head>
 <body>
 
+  <!-- SVG Filters (hidden) -->
+  <svg aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+    <defs>
+      <!-- Distressed / eroded text filter — punches random holes like weathered paint -->
+      <filter id="fold-distress" x="-3%" y="-3%" width="106%" height="106%" color-interpolation-filters="sRGB">
+        <!-- Layer 1: coarse erosion patches -->
+        <feTurbulence type="fractalNoise" baseFrequency="0.055 0.048" numOctaves="4" seed="14" result="noise1"/>
+        <feColorMatrix type="matrix"
+          values="0 0 0 0 0
+                  0 0 0 0 0
+                  0 0 0 0 0
+                  0 0 0 -6 5.2"
+          in="noise1" result="mask1"/>
+        <!-- Layer 2: fine grain scratches -->
+        <feTurbulence type="fractalNoise" baseFrequency="0.12 0.09" numOctaves="3" seed="27" result="noise2"/>
+        <feColorMatrix type="matrix"
+          values="0 0 0 0 0
+                  0 0 0 0 0
+                  0 0 0 0 0
+                  0 0 0 -9 8"
+          in="noise2" result="mask2"/>
+        <!-- Combine both erosion masks -->
+        <feMerge result="combinedMask">
+          <feMergeNode in="mask1"/>
+          <feMergeNode in="mask2"/>
+        </feMerge>
+        <!-- Composite: keep only pixels that survive both masks -->
+        <feComposite in="SourceGraphic" in2="combinedMask" operator="in"/>
+      </filter>
+    </defs>
+  </svg>
+
   <!-- Rain layer -->
   <div class="rain-layer" aria-hidden="true"></div>
 
@@ -756,7 +798,7 @@
 
       <p class="hero-tagline">How far would you go for justice?</p>
 
-      <p class="hero-desc">A tale of vengeance, redemption, and the unbreakable bond of a father's love — set against the rain-soaked streets of the Boston area. A heart-pounding thriller with twists that leave you breathless.</p>
+      <p class="hero-desc">A tale of vengeance, redemption, and the unbreakable bond of a father's love, set against the rain-soaked streets of the Boston area. A heart-pounding thriller with twists that leave you breathless.</p>
 
       <div class="btn-group" style="justify-content:center;">
         <a href="#buy" class="btn btn-primary">Get Your Copy</a>
@@ -781,9 +823,9 @@
       <h2 class="section-title">Welcome to the FOLD</h2>
 
       <div class="synopsis-body">
-        <p>In a quiet town near Boston, one family's perfect life is shattered when a night at the movies ends in tragedy — eight-year-old <strong>Jamie Thornton</strong> mysteriously vanishes, leaving her father, <strong>Jim</strong>, desperate for answers and the world he knew in ruins.</p>
+        <p>In a quiet town near Boston, one family's perfect life is shattered when a night at the movies ends in tragedy. Eight-year-old <strong>Jamie Thornton</strong> mysteriously vanishes, leaving her father, <strong>Jim</strong>, desperate for answers and the world he knew in ruins.</p>
 
-        <p>When the justice system fails, Jim is approached by a secretive group called <strong>the FOLD</strong> — a network of grieving fathers promising justice outside the law. Drawn into their seductive pledge, Jim spirals into a dark underworld where nothing is as it seems. The truth always out of view, hidden below the surface.</p>
+        <p>When the justice system fails, Jim is approached by a secretive group called <strong>the FOLD</strong>: a network of grieving fathers promising justice outside the law. Drawn into their seductive pledge, Jim spirals into a dark underworld where nothing is as it seems. The truth always out of view, hidden below the surface.</p>
 
         <p>As the FOLD's true motives are revealed, Jim uncovers a chilling conspiracy that connects shadowy government forces, staged lies, and a sinister elite determined to exploit him. Fueled by desperation, Jim teams up with an unlikely ally, only to uncover an even more shocking truth:</p>
 
@@ -791,7 +833,7 @@
 
         <p>Racing against time, Jim must navigate betrayal, deadly secrets, and his own morality to bring his daughter home.</p>
 
-        <span class="kicker">Welcome to the FOLD — where justice has its own rules.</span>
+        <span class="kicker">Welcome to the FOLD. Where justice has its own rules.</span>
       </div>
     </div>
   </section>
@@ -813,7 +855,7 @@
             </svg>
           </span>
           <h3>Mystery &amp; Suspense</h3>
-          <p>Every chapter peels back another layer of deception. Nothing — and no one — is what they appear to be.</p>
+          <p>Every chapter peels back another layer of deception. Nothing, and no one, is what they appear to be.</p>
         </div>
 
         <div class="theme-card">
@@ -870,7 +912,7 @@
 
         <!-- Cover — LEFT -->
         <div class="buy-cover">
-          <img src="TheFOLD.Cover.png" alt="The FOLD — novel by Greg Loeffelholz" />
+          <img src="TheFOLD.Cover.png" alt="The FOLD novel by Greg Loeffelholz" />
         </div>
 
         <!-- Cards — RIGHT -->
@@ -878,19 +920,6 @@
           <p class="buy-intro">The FOLD is available on Amazon in both Kindle and Paperback editions. Start reading today.</p>
 
           <div class="buy-cards">
-
-            <!-- Kindle -->
-            <div class="buy-card">
-              <span class="buy-card-icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-                  <line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2"/>
-                </svg>
-              </span>
-              <h3>Kindle Edition</h3>
-              <p class="sub">Instant delivery · Any device</p>
-              <a href="https://www.amazon.com/dp/B0GLQY9CFP" class="btn btn-primary" target="_blank" rel="noopener">Buy on Amazon →</a>
-            </div>
 
             <!-- Paperback -->
             <div class="buy-card">
@@ -902,7 +931,20 @@
               </span>
               <h3>Paperback</h3>
               <p class="sub">Hold the story in your hands</p>
-              <a href="https://www.amazon.com/dp/B0GLRRBLGV" class="btn btn-primary" target="_blank" rel="noopener">Buy on Amazon →</a>
+              <a href="https://www.amazon.com/dp/B0GLRRBLGV" class="btn btn-primary" target="_blank" rel="noopener">Buy on Amazon <span class="btn-arrow">→</span></a>
+            </div>
+
+            <!-- Kindle -->
+            <div class="buy-card">
+              <span class="buy-card-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                  <line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2"/>
+                </svg>
+              </span>
+              <h3>Kindle Edition</h3>
+              <p class="sub">Instant delivery · Any device</p>
+              <a href="https://www.amazon.com/dp/B0GLQY9CFP" class="btn btn-primary" target="_blank" rel="noopener">Buy on Amazon <span class="btn-arrow">→</span></a>
             </div>
 
           </div>
@@ -924,9 +966,9 @@
         </div>
         <div>
           <p class="author-role">Author · Thriller Writer</p>
-          <p class="author-bio">Greg Loeffelholz is a debut thriller writer with a gift for weaving pulse-pounding suspense with deeply human stories. Rooted in the atmosphere of the Boston area — its rain-slicked streets, old neighborhoods, and raw grit — <em>The FOLD</em> is his first novel in what promises to be a gripping series. It's the kind of story driven by the questions that keep us up at night: about justice, family, and how far we'd go when the system abandons us.</p>
+          <p class="author-bio">Greg Loeffelholz is a debut thriller writer with a gift for weaving pulse-pounding suspense with deeply human stories. Rooted in the atmosphere of the Boston area, with its rain-slicked streets, old neighborhoods, and raw grit. <em>The FOLD</em> is his first novel in what promises to be a gripping series. It's the kind of story driven by the questions that keep us up at night: about justice, family, and how far we'd go when the system abandons us.</p>
           <br />
-          <a href="about.html" class="btn btn-secondary">About the Author →</a>
+          <a href="about.html" class="btn btn-secondary">About the Author <span class="btn-arrow" style="color:inherit;">→</span></a>
         </div>
       </div>
     </div>
