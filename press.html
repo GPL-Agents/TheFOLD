@@ -162,18 +162,104 @@
     .cover-info p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; margin-bottom: 1rem; }
     .cover-info p:last-child { color: rgba(200,146,42,0.7); font-size: 0.82rem; font-style: italic; margin-bottom: 0; }
 
-    /* Reviews placeholder */
-    .review-placeholder {
-      background: var(--navy3);
-      border: 1px dashed rgba(120,180,230,0.12);
-      border-radius: 4px;
-      padding: 3rem;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.7;
+    /* Reviews grid */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      margin-top: 2rem;
     }
-    .review-placeholder p + p { margin-top: 0.6rem; }
+
+    .review-card {
+      background: var(--navy3);
+      border: 1px solid rgba(120,180,230,0.1);
+      border-radius: 4px;
+      padding: 1.5rem 1.6rem 1.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      text-decoration: none;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .review-card:hover {
+      border-color: rgba(200,146,42,0.4);
+      transform: translateY(-2px);
+    }
+
+    .review-reviewer {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.5rem;
+    }
+    .review-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--amber);
+      color: #05090f;
+      font-size: 0.75rem;
+      font-weight: 700;
+      font-family: 'Lato', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      text-transform: uppercase;
+    }
+    .review-name {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .review-stars {
+      color: #f90;
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.3rem;
+    }
+    .review-title {
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--white);
+      margin-bottom: 0.35rem;
+    }
+    .review-date {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+    .review-format {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+    .review-format span { color: #07a3c8; }
+    .review-body {
+      font-size: 0.88rem;
+      color: rgba(236,233,226,0.82);
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: 1rem;
+    }
+    .review-link {
+      font-size: 0.72rem;
+      color: var(--amber);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .review-link:hover { color: var(--amber-lt); }
+
+    @media (max-width: 800px) {
+      .reviews-grid { grid-template-columns: 1fr; }
+    }
 
     /* Contact */
     .contact-panel {
@@ -192,7 +278,7 @@
     .btn { display: inline-flex; align-items: center; padding: 0.95rem 2.2rem; font-family: 'Lato', sans-serif; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: all 0.25s; border: none; cursor: pointer; }
     .btn-primary { background: var(--amber); color: #05090f; }
     .btn-primary:hover { background: var(--amber-lt); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(200,146,42,0.3); }
-    .btn-arrow { color: #fff; font-size: 1.3rem; line-height: 1; display: inline-flex; align-items: center; }
+    .btn-arrow { color: #fff; font-size: 1.3rem; font-weight: 900; line-height: 1; display: inline-flex; align-items: center; }
     .btn-secondary { background: transparent; color: var(--white); border: 1px solid rgba(200,200,210,0.25); }
     .btn-secondary:hover { border-color: rgba(200,200,210,0.6); background: rgba(200,200,210,0.05); transform: translateY(-2px); }
 
@@ -316,9 +402,47 @@
       <div class="block">
         <p class="section-label">Early Praise</p>
         <h2 class="section-title">Reader Reviews</h2>
-        <div class="review-placeholder">
-          <p>Reader reviews and editorial endorsements will appear here.</p>
-          <p>If you've read <em>The FOLD</em> and would like to contribute a quote for the press page, please reach out below.</p>
+        <div class="reviews-grid">
+
+          <a class="review-card" href="https://www.amazon.com/product-reviews/B0GLRRBLGV" target="_blank" rel="noopener">
+            <div class="review-reviewer">
+              <div class="review-avatar">N</div>
+              <div class="review-name">NWR</div>
+            </div>
+            <div class="review-stars">★★★★★</div>
+            <div class="review-title">Great book!</div>
+            <div class="review-date">Reviewed in the United States on April 7, 2026</div>
+            <div class="review-format">Format: Paperback &nbsp;|&nbsp; <span>Verified Purchase</span></div>
+            <p class="review-body">Just finished The Fold, an excellent thriller from start to finish. I read it on a flight and couldn't put it down. Really well written and completely engaging the whole way through. A++</p>
+            <span class="review-link">Read on Amazon ↗</span>
+          </a>
+
+          <a class="review-card" href="https://www.amazon.com/product-reviews/B0GLRRBLGV" target="_blank" rel="noopener">
+            <div class="review-reviewer">
+              <div class="review-avatar">TA</div>
+              <div class="review-name">Tarek Alda</div>
+            </div>
+            <div class="review-stars">★★★★★</div>
+            <div class="review-title">Great book</div>
+            <div class="review-date">Reviewed in the United States on February 16, 2026</div>
+            <div class="review-format">Format: Paperback &nbsp;|&nbsp; <span>Verified Purchase</span></div>
+            <p class="review-body">This was an amazing book from start to finish. The story was engaging, the characters felt real, and the writing made it hard to put down. Every chapter kept me interested and wanting to know what would happen next. I truly enjoyed reading it and would highly recommend it to anyone looking for a great book.</p>
+            <span class="review-link">Read on Amazon ↗</span>
+          </a>
+
+          <a class="review-card" href="https://www.amazon.com/product-reviews/B0GLRRBLGV" target="_blank" rel="noopener">
+            <div class="review-reviewer">
+              <div class="review-avatar">KA</div>
+              <div class="review-name">Kevin A Apgar</div>
+            </div>
+            <div class="review-stars">★★★★★</div>
+            <div class="review-title">Quick read and definitely a page turner.</div>
+            <div class="review-date">Reviewed in the United States on February 10, 2026</div>
+            <div class="review-format">Format: Paperback &nbsp;|&nbsp; <span>Verified Purchase</span></div>
+            <p class="review-body">What a great story! Once I started reading it, I couldn't put it down. As a Hanover resident like the author, it was great to have that local touch and really feel like you are in the story. Would love to see what happens with Jim in the future!</p>
+            <span class="review-link">Read on Amazon ↗</span>
+          </a>
+
         </div>
       </div>
 
